@@ -1,0 +1,6 @@
+
+
+http://localhost/Php/notes.php?id=1 : JSON des notes (service PHP).
+http://localhost:8080/monprojet/api/etudiant?id=1 : JSON de l’étudiant (service Java).
+http://localhost:8080/monprojet/etudiant?id=1 : page Java avec étudiant + notes (Java appelle PHP).
+http://localhost/Php/client.php?id=1 : page PHP avec étudiant + notes (PHP appelle Java).

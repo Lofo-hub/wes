@@ -1,0 +1,15 @@
+package model;
+
+public class Etudiant {
+    private int id;
+    private String nom;
+    private String prenom;
+
+    public Etudiant(int id, String nom) {
+        this.id = id;
+        this.nom = nom;
+    }
+
+    public int getId() { return id; }
+    public String getNom() { return nom; }
+}

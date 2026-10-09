@@ -12,7 +12,7 @@ mkdir build\WEB-INF\lib
 echo ==============================
 echo 2. Compilation des fichiers Java
 echo ==============================
-javac -cp "lib/*;E:\download\Nouveau dossier\apache-tomcat-9.0.122\lib\servlet-api.jar" -d build\WEB-INF\classes src\model\*.java src\util\*.java src\dao\*.java src\client\*.java src\controller\*.java
+javac -cp "lib/*;C:\apache-tomcat-10.1.28\lib\servlet-api.jar" -d build\WEB-INF\classes src\model\*.java src\util\*.java src\dao\*.java src\client\*.java src\controller\*.java
 
 if errorlevel 1 (
     echo ERREUR : la compilation a echoue.
@@ -44,7 +44,7 @@ if errorlevel 1 (
 echo ==============================
 echo 6. Deploiement dans Tomcat
 echo ==============================
-copy /Y monprojet.war "E:\download\Nouveau dossier\apache-tomcat-9.0.122\webapps\"
+copy /Y monprojet.war "C:\apache-tomcat-10.1.28\webapps\"
 
 echo BUILD TERMINE !
 pause

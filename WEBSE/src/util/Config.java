@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class Config {
     public static final String DB_URL = "jdbc:mysql://localhost:3306/etudiant_db";
     public static final String DB_USER = "root";
-    public static final String DB_PASSWORD = "1234";
+    public static final String DB_PASSWORD = "";
     public static final String NOTES_URL = "http://localhost/Php/notes.php?id=";
 
     public static Connection getConnection() throws Exception {

@@ -1,30 +1,34 @@
 package controller;
 
-import client.NotesClient;
+import client.AgeClient;
 import dao.EtudiantDAO;
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
+import java.util.List;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import model.Etudiant;
 
 @WebServlet("/etudiant")
 public class EtudiantServlet extends HttpServlet {
     private final EtudiantDAO dao = new EtudiantDAO();
-    private final NotesClient notesClient = new NotesClient();
+    private final AgeClient ageClient = new AgeClient();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            int id = Integer.parseInt(req.getParameter("id"));
-            Etudiant etudiant = dao.findById(id);
-            if (etudiant == null) {
+            List<Etudiant> etudiants = dao.findAll();
+            if (etudiants == null || etudiants.isEmpty()) {
                 resp.sendError(404, "Etudiant introuvable");
                 return;
             }
-            req.setAttribute("etudiant", etudiant);
-            req.setAttribute("notes", notesClient.getNotes(id));
+            for (Etudiant etudiant : etudiants) {
+                etudiant.setAge(ageClient.getAges(etudiant.getId()).stream().findFirst().map(a -> a.getAge()).orElse(0));
+            }
+
+            req.setAttribute("etudiants", etudiants);
             req.getRequestDispatcher("/WEB-INF/views/etudiant.jsp").forward(req, resp);
         } catch (NumberFormatException e) {
             resp.sendError(400, "id invalide");

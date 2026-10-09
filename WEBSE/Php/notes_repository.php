@@ -11,12 +11,12 @@ function lireNotes($id) {
     return $notes;
 }
 function lireTout() {
-    $parEtudiant = [];
+    $parE = [];
     $lignes = file(__DIR__ . "/notes.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lignes as $ligne) {
-        [$idEtu, $matiere, $note] = explode(";", $ligne);
-        $parEtudiant[(int)$idEtu][] = ["matiere" => $matiere, "note" => (float)$note];
+        [$idEtu, $age] = explode(";", $ligne);
+        $parE[(int)$idEtu][] = ["age" => (int)$age];
     }
-    return $parEtudiant;
+    return $parE;
 }
 //la lecture du fichier

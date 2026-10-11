@@ -31,4 +31,29 @@ public class EtudiantDAO {
     }
     return liste;
 }
+
+public List<Etudiant> findAllSortedByAge(String ascending, List<Etudiant> etudiants) throws Exception {
+
+    for (int i = 0; i < etudiants.size() - 1; i++) {
+        for (int j = 0; j < etudiants.size() - 1 - i; j++) {
+
+            if (ascending.equals("asc")) {
+                if (etudiants.get(j).getAge() > etudiants.get(j + 1).getAge()) {
+                    Etudiant e = etudiants.get(j);
+                    etudiants.set(j, etudiants.get(j + 1));
+                    etudiants.set(j + 1, e);
+                }
+            } else {
+                if (etudiants.get(j).getAge() < etudiants.get(j + 1).getAge()) {
+                    Etudiant e = etudiants.get(j);
+                    etudiants.set(j, etudiants.get(j + 1));
+                    etudiants.set(j + 1, e);
+                }
+            }
+        }
+    }
+
+    return etudiants;
+}
+
 }

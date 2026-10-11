@@ -6,6 +6,6 @@ header("Content-Type: application/json; charset=utf-8");
 if (isset($_GET["id"])) {
     echo json_encode(lireNotes($_GET["id"]));
 } else {
-    echo json_encode(lireTout());
+    echo json_encode(lireLivre());
 }
 //remplace l’ancien : le service qui renvoie du JSON

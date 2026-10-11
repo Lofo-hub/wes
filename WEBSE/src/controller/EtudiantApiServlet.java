@@ -3,8 +3,8 @@ package controller;
 import com.google.gson.Gson;
 import dao.EtudiantDAO;
 import java.io.IOException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
 import model.Etudiant;
 
 @WebServlet("/api/etudiant")

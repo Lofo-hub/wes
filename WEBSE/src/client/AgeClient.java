@@ -10,12 +10,11 @@ import model.Age;
 import util.Config;
 
 public class AgeClient {
-    public List<Age> getAges(int idEtudiant) throws Exception {
+    public int getAges(int idEtudiant) throws Exception {
         HttpRequest req = HttpRequest.newBuilder()
                 .uri(URI.create(Config.NOTES_URL + idEtudiant)).build();
         HttpResponse<String> rep = HttpClient.newHttpClient()
                 .send(req, HttpResponse.BodyHandlers.ofString());
-        Type type = new TypeToken<List<Age>>(){}.getType();
-        return new Gson().fromJson(rep.body(), type);
+        return new Gson().fromJson(rep.body(), Age.class).getAge();
     }
 }

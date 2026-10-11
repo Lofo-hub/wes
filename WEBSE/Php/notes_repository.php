@@ -1,14 +1,25 @@
 <?php
-function lireNotes($id) {
+function lireNotes($idh) {
     $notes = [];
     $lignes = file(__DIR__ . "/notes.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lignes as $ligne) {
-        [$idEtu, $matiere, $note] = explode(";", $ligne);
-        if ($idEtu == $id) {
-            $notes[] = ["matiere" => $matiere, "note" => (float)$note];
+        [$id, $age] = explode(";", $ligne);
+        if ($id == $idh) {
+            return [ 
+                "id" => $id, 
+                "age" => (float)$age
+            ];
         }
     }
-    return $notes;
+}
+function lireLivre() {
+    $livres = [];
+    $lignes = file(__DIR__ . "/livres.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lignes as $ligne) {
+        [$idLivre, $auteur] = explode(";", $ligne);
+            $livres[] = ["idLivre" => $idLivre, "auteur" => $auteur];
+    }
+    return $livres;
 }
 function lireTout() {
     $parE = [];

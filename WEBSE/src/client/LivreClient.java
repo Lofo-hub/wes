@@ -17,7 +17,6 @@ public class LivreClient {
                 .send(req, HttpResponse.BodyHandlers.ofString());
         Type type = new TypeToken<List<Livre>>(){}.getType();
         List <Livre> livres = new Gson().fromJson(rep.body(), type);
-
         return livres;
     }
 }

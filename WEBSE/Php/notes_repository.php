@@ -30,4 +30,15 @@ function lireTout() {
     }
     return $parE;
 }
+
+function lireProvince() {
+    $province = [];
+
+    $lignes = file(__DIR__ . "/province.txt", FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lignes as $ligne) {
+        [$nomProvince] = explode(";", $ligne);
+        $province[] = ["nomProvince" => $nomProvince];
+    }
+    return $province;
+}
 //la lecture du fichier

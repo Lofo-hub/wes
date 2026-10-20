@@ -4,6 +4,7 @@
 <%
     List<Etudiant> etudiants = (List<Etudiant>) request.getAttribute("etudiants");
     List<Livre> livres = (List<Livre>) request.getAttribute("livres");
+    List<Province> provinces = (List<Province>) request.getAttribute("provinces");
 %>
 
 <html>
@@ -34,7 +35,17 @@
             <li><%= livre.getAuteur() %></li>
         <% } %>
     </ul>
+    <form action="<%= request.getContextPath() %>/etudiant" method="post">
+        <input type="text" name="nom" placeholder="Nom de l'étudiant">
+        <input type="number" name="age" placeholder="Âge de l'étudiant">
+            <label for="province">Province:</label>
+            <select name="province" id="province">
+                <% for (Province province : provinces) { %>
+                    <option value="<%= province.getNomProvince() %>"><%= province.getNomProvince() %></option>
+                <% } %>
+            </select>
 
+        <input type="submit" value="Ajouter l'étudiant">
+    </form>
 </body>
 </html>
-```
